@@ -60,6 +60,30 @@ PLACES = {
     }
 }
 
+PHONES = {
+    "1": {
+        "_id": "1",
+        "name": "iPhone X",
+        "brand": "Apple",
+        "store": "Apple retail"
+    },
+
+    "2": {
+        "_id": "2",
+        "name": "Tecno camon 17s",
+        "brand": "Tecno",
+        "store": "Tecno store"
+    },
+
+    "3": {
+        "_id": "3",
+        "name": "Samsung Z-fold",
+        "brand": "Samsung",
+        "store": "Galaxy store"
+    }
+}
+
+# level one
 def get_all_posts():
     return list(POSTS.values())
 
@@ -79,7 +103,8 @@ def add_post(posts):
         abort(
             406, f"Post with {title} already exists."
         )
-    
+
+# level one
 def get_all_people():
     return list(PEOPLE.values())
 
@@ -89,4 +114,25 @@ def get_one_person(_id):
     else:
         abort(
             404, f'Person with {_id} does not exist.'
+        )
+
+# level two
+def get_all_places():
+    return list(PLACES.values())
+
+# level three
+def get_all_phones():
+    res = list(PHONES.values())
+    res.append({"next": "http://127.0.0.1:9000/api/phones/#"})
+    return res
+
+# level three
+def get_one_phone(__id):
+    if __id in PHONES:
+        res = [PHONES[__id]]
+        res.append({"return": "http://127.0.0.1:9000/api/phones"})
+        return res
+    else:
+        abort(
+            404, f'Person with {__id} does not exist.'
         )

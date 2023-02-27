@@ -24,8 +24,6 @@ components:
 
     People:
       type: "object"
-      # required:
-      #   - username
       properties:
         username:
           type: "string"
@@ -43,6 +41,18 @@ components:
           type: "string"
         country:
           type: "string"
+    
+    Phones:
+      type: "object"
+      required:
+        - name
+      properties:
+        name:
+          type: "string"
+        brand:
+          type: "string"
+        store:
+          type: "string"
           
   parameters:
     title:
@@ -56,6 +66,14 @@ components:
     _id:
       name: "_id"
       description: "_id of the person"
+      in: path
+      required: True
+      schema:
+        type: "string"
+    
+    __id:
+      name: "__id"
+      description: "__id of the phone"
       in: path
       required: True
       schema:
@@ -120,3 +138,37 @@ paths:
       responses:
         "200":
           description: "Successfully read all people"
+
+# Level two - Http Verbs
+  /places:
+      get:
+        operationId: "db.get_all_places"
+        tags:
+          - Places
+        summary: "Get the list of places"
+        responses:
+          "200":
+            description: "Successfully read all places"
+
+# Level three - HATEOAS
+  /phones:
+    get:
+      operationId: "db.get_all_phones"
+      tags:
+        - Phones
+      summary: "Get list of phone"
+      responses:
+        "200":
+          description: "Successfully read all phones"
+  
+  /phones/{__id}:
+    get:
+      operationId: "db.get_one_phone"
+      tags:
+        - Phones
+      summary: "Get one phone"
+      parameters:
+        - $ref: "#/components/parameters/__id"
+      responses:
+        "200":
+          description: "Successfully read one phone"
