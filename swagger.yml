@@ -10,4 +10,7 @@ servers:
 
 components:
   schemas:
-    
+    Posts:
+      type: "object"
+      required:
+        - 
