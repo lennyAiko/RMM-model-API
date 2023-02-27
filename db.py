@@ -76,3 +76,10 @@ def add_post(posts):
         abort(
             406, f"Post with {title} already exists."
         )
+    
+def get_all_people():
+    return list(PEOPLE.values())
+
+# def get_one_person(id):
+#     data = PEOPLE[id]
+#     return list(data)
