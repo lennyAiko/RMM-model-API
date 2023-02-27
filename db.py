@@ -54,3 +54,6 @@ PLACES = {
         "Location": "Japan"
     }
 }
+
+def get_all_posts():
+    return list(POSTS.values())

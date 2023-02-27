@@ -3,7 +3,7 @@ import connexion
 app = connexion.App(__name__, specification_dir="./")
 app.add_api("swagger.yml")
 
-@app.route("/")
+@app.route('/')
 def endpoints():
     data = []
     return data

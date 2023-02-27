@@ -70,8 +70,10 @@ components:
         type: "string"
 
 paths:
-  /endpoints:
+  /posts:
     get:
+      operationId: "db.get_all_posts"
+      summary: "Get the list of endpoints"
       responses:
         "200":
           description: "Available endpoints"
