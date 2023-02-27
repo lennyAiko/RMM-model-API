@@ -13,4 +13,65 @@ components:
     Posts:
       type: "object"
       required:
-        - 
+        - title
+      properties:
+        title:
+          type: "string"
+        author:
+          type: "string"
+        content:
+          type: "string"
+
+    People:
+      type: "object"
+      required:
+        - username
+      properties:
+        username:
+          type: "string"
+        name:
+          type: "string"
+        bio:
+          type: "string"
+
+    Places:
+      type: "object"
+      required:
+        - name
+      properties:
+        name:
+          type: "string"
+        country:
+          type: "string"
+          
+  parameters:
+    title:
+      name: "title"
+      description: "Title of the posts"
+      in: path
+      required: True
+      schema:
+        type: "string"
+      
+    username:
+      name: "username"
+      description: "Username of the users"
+      in: path
+      required: True
+      schema:
+        type: "string"
+
+    name:
+      name: "name"
+      description: "Name of the places"
+      in: path
+      required: True
+      schema:
+        type: "string"
+
+paths:
+  /endpoints:
+    get:
+      responses:
+        "200":
+          description: "Available endpoints"
