@@ -73,7 +73,26 @@ paths:
   /posts:
     get:
       operationId: "db.get_all_posts"
+      tags:
+        - Posts
       summary: "Get the list of endpoints"
       responses:
         "200":
-          description: "Available endpoints"
+          description: "Successfully read all posts"
+    
+    post:
+      operationId: "db.add_post"
+      tags:
+        - Posts
+      summary: "Add a post"
+      requestBody:
+        description: "Post to create"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "posts"
+              $ref: "#/components/schemas/Posts"
+      responses:
+        "201":
+          description: "Successfully created post"
