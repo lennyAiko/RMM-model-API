@@ -1,3 +1,5 @@
+from flask import abort
+
 POSTS = {
     1: {
         "title": "Atomic habits",
@@ -57,3 +59,20 @@ PLACES = {
 
 def get_all_posts():
     return list(POSTS.values())
+
+def add_post(posts):
+    title = posts.get("title")
+    author = posts.get("author")
+    content = posts.get("content")
+
+    if title and title not in POSTS:
+        POSTS[title] = {
+            "title": title,
+            "author": author,
+            "content": content
+        }
+        return POSTS[title], 201
+    else:
+        abort(
+            406, f"Post with {title} already exists."
+        )
