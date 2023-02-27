@@ -1,0 +1,5 @@
+POSTS = {}
+
+PEOPLE = {}
+
+PLACES = {}

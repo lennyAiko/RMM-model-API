@@ -1,0 +1,13 @@
+openapi: 3.0.0
+
+info:
+  title: "RMM model API practical"
+  description: "A practical API to show the levels of the RMM model."
+  version: "1.0.0"
+
+servers:
+  - url: "/api"
+
+components:
+  schemas:
+    
