@@ -53,13 +53,13 @@ components:
       schema:
         type: "string"
       
-    # username:
-    #   name: "username"
-    #   description: "Username of the users"
-    #   in: path
-    #   required: True
-    #   schema:
-    #     type: "string"
+    _id:
+      name: "_id"
+      description: "_id of the person"
+      in: path
+      required: True
+      schema:
+        type: "string"
 
     name:
       name: "name"
@@ -105,32 +105,18 @@ paths:
       tags:
         - People
       summary: "Get list of people"
-      requestBody:
-        description: "People to read"
-        required: True
-        content:
-          application/json:
-            schema:
-              x-body-name: "people"
-              $ref: "#/components/schemas/People"
       responses:
         "200":
           description: "Successfully read all people"
   
-  # /people/{id}:
-  #   post:
-  #     operationId: "db.get_all_people"
-  #     tags:
-  #       - People
-  #     summary: "Get list of people"
-  #     requestBody:
-  #       description: "People to read"
-  #       required: True
-  #       content:
-  #         application/json:
-  #           schema:
-  #             x-body-name: "id"
-  #             $ref: "#/components/schemas/People"
-  #     responses:
-  #       "200":
-  #         description: "Successfully read all people"
+  /people/{_id}:
+    post:
+      operationId: "db.get_one_person"
+      tags:
+        - People
+      summary: "Get one person"
+      parameters:
+        - $ref: "#/components/parameters/_id"
+      responses:
+        "200":
+          description: "Successfully read all people"
